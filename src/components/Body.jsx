@@ -20,16 +20,16 @@ const Body = () => {
       });
       dispatch(addUser(res.data));
     } catch (err) {
-      if (err.status === 401) {
-        navigate("/login");
-      }
-      console.error(err);
+      // if (err.status === 401) {
+      // }
+      // console.error(err);
+      navigate("/login");
     }
   };
 
   useEffect(() => {
     fetchUser();
-  }, []);
+  }, [userData]);
 
   return (
     <div>

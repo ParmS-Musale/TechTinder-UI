@@ -19,15 +19,20 @@ const NavBar = () => {
     }
   };
   return (
-    <div className="navbar bg-base-300">
+    <div className="navbar bg-slate-950 rounded-sm shadow-lg">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl">
-          👩‍💻 TechTinder
+          <img
+            src="src/Images/TechTinder_Logos.webp"
+            alt="Logo"
+            className="w-15 h-15 btn-circle"
+          />
+          <p className="text-red-600 font-bold">TechTinder</p>
         </Link>
       </div>
       {user && (
         <div className="flex-none gap-2">
-          <div className="form-control">Welcome, {user.firstName}</div>
+          <div className="form-control text-pink-300">Welcome, {user.firstName}</div>
           <div className="dropdown dropdown-end mx-5 flex">
             <div
               tabIndex={0}

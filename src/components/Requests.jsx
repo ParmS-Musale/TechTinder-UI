@@ -49,41 +49,45 @@ const Requests = () => {
     return <h1 className="flex justify-center my-10"> No Requests Found</h1>;
 
   return (
-    <div className="text-center my-10">
-      <h1 className="text-bold text-white text-3xl">Connection Requests</h1>
-
+    <div className="container mx-auto px-4 my-10">
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        Connection Requests 🩷
+      </h1>
+  
       {requests.map((request) => {
         const { _id, firstName, lastName, photoUrl, age, gender, about } =
           request.fromUserId;
-
+  
         return (
           <div
             key={_id}
-            className=" flex justify-between items-center m-4 p-4 rounded-lg bg-base-300  mx-auto"
+            className="flex flex-col md:flex-row items-center bg-white shadow-lg rounded-lg p-6 mb-6 hover:shadow-xl transition-shadow"
           >
-            <div>
-              <img
-                alt="photo"
-                className="w-20 h-20 rounded-full"
-                src={photoUrl}
-              />
-            </div>
-            <div className="text-left mx-4 ">
-              <h2 className="font-bold text-xl">
-                {firstName + " " + lastName}
+            <img
+              alt={`${firstName} ${lastName}`}
+              className="w-20 h-20 rounded-full border-2 border-blue-500 object-cover mb-4 md:mb-0"
+              src={photoUrl}
+            />
+  
+            <div className="flex-1 text-center md:text-left md:mx-4">
+              <h2 className="text-xl font-semibold text-gray-800">
+                {firstName} {lastName}
               </h2>
-              {age && gender && <p>{age + ", " + gender}</p>}
-              <p>{about}</p>
+              {age && gender && (
+                <p className="text-sm text-gray-600">{`${age}, ${gender}`}</p>
+              )}
+              <p className="text-sm text-gray-700 mt-2">{about}</p>
             </div>
-            <div>
+  
+            <div className="flex space-x-4 mt-4 md:mt-0">
               <button
-                className="btn btn-primary mx-2"
+                className="px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600 transition"
                 onClick={() => reviewRequest("rejected", request._id)}
               >
                 Reject
               </button>
               <button
-                className="btn btn-secondary mx-2"
+                className="px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 transition"
                 onClick={() => reviewRequest("accepted", request._id)}
               >
                 Accept
@@ -94,5 +98,6 @@ const Requests = () => {
       })}
     </div>
   );
+  
 };
 export default Requests;
